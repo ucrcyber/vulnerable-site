@@ -1,0 +1,33 @@
+{
+  "name": "vulnerable-site",
+  "version": "1.0.0",
+  "description": "A vulnerable site for cyber@ucr.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ucrcyber/vulnerable-site.git"
+  },
+  "keywords": [
+    "vulnerable",
+    "site",
+    "cyber",
+    "ucr"
+  ],
+  "author": "William Shiao <willshiao@gmail.com>",
+  "license": "Unlicense",
+  "bugs": {
+    "url": "https://github.com/ucrcyber/vulnerable-site/issues"
+  },
+  "homepage": "https://github.com/ucrcyber/vulnerable-site#readme",
+  "dependencies": {
+    "config": "^1.26.2",
+    "express": "^4.16.1",
+    "express-handlebars": "^3.0.0",
+    "sequelize": "^4.13.5",
+    "sqlite3": "^3.1.13",
+    "winston": "^2.4.0"
+  }
+}
