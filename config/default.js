@@ -1,10 +1,10 @@
-'use strict';
+'use strict'
 
 module.exports = {
   db: {
-    uri: 'sqlite://db.sqlite',
+    uri: 'sqlite://db.sqlite'
   },
   site: {
-    port: 3000,
-  },
-};
+    port: 3000
+  }
+}
