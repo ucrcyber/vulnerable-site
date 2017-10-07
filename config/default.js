@@ -15,6 +15,7 @@ module.exports = {
     resave: false,
     saveUninitialized: false
   },
+  fakeUsers: 10, // Number of fake users to add
   addDefaultUser: true,
   defaultUser: {
     name: 'Will',

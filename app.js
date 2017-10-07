@@ -38,7 +38,7 @@ async function main () {
   await CreditReport.sync({ force: true })
   await NewsItem.sync({ force: true })
 
-  await dataGenerator.insertRandomData(1)
+  await dataGenerator.insertRandomData(config.get('fakeUsers'))
   await utils.insertDefaultUser()
   await utils.insertNewsItems()
 
