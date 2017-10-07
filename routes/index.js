@@ -3,9 +3,11 @@
 const { ensureLoggedIn } = require('connect-ensure-login')
 const router = require('express').Router()
 const passport = require('../lib/passport')
+const NewsItem = require('../models/NewsItem')
 
-router.get('/', ensureLoggedIn(), (req, res) => {
-  res.render('index', { user: req.user })
+router.get('/', ensureLoggedIn(), async (req, res) => {
+  const news = await NewsItem.findAll({ limit: 15, order: [['createdAt', 'DESC']] })
+  res.render('index', { user: req.user, news })
 })
 
 router.get('/forms', ensureLoggedIn(), (req, res) => {

@@ -12,6 +12,7 @@ const dataGenerator = require('./lib/dataGenerator')
 
 const User = require('./models/User')
 const CreditReport = require('./models/CreditReport')
+const NewsItem = require('./models/NewsItem')
 const app = express()
 
 const indexRoute = require('./routes/index')
@@ -35,9 +36,11 @@ async function main () {
   // Sync DB models
   await User.sync({ force: true })
   await CreditReport.sync({ force: true })
+  await NewsItem.sync({ force: true })
 
   await dataGenerator.insertRandomData(1)
   await utils.insertDefaultUser()
+  await utils.insertNewsItems()
 
   app.listen(process.env.POST || config.get('site.port'), () => {
     logger.info('Listening on port', process.env.POST || config.get('site.port'))
