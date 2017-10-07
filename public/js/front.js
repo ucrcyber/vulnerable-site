@@ -37,8 +37,8 @@ $(document).ready(function () {
     // ------------------------------------------------------ //
   $('#login-form').validate({
     messages: {
-      loginUsername: 'please enter your username',
-      loginPassword: 'please enter your password'
+      username: 'please enter your username',
+      password: 'please enter your password'
     }
   })
 
