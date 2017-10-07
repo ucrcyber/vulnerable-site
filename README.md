@@ -16,7 +16,7 @@ A vulnerable site written to demonstrate some basic web attacks.
 2. Change directory and install dependencies: `cd vulnerable-site && npm install`
 3. Run the site: `node app.js`
 
-The site can then be accessed at [http://localhost:3000](http://localhost:3000.
+The site can then be accessed at [http://localhost:3000](http://localhost:3000).
 
 ### Configuration
 
