@@ -10,6 +10,9 @@ module.exports = {
   site: {
     port: 3000
   },
+  shell: {
+    options: {}
+  },
   session: {
     secret: '4e!HJS3kMZJvAFgb%',
     resave: false,

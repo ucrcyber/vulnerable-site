@@ -1,5 +1,6 @@
 'use strict'
 
+const config = require('config')
 const moment = require('moment')
 
 const { ensureLoggedIn } = require('connect-ensure-login')
@@ -51,7 +52,7 @@ router.post('/shell', ensureLoggedIn(), async(req, res) => {
   const command = `cowsay "${req.body.command}"` // Allow for command injection
   logger.debug('Executing command:', command)
 
-  exec(command, (error, stdout, stderr) => {
+  exec(command, config.get('shell.options'), (error, stdout, stderr) => {
     if (error) {
       logger.error('Error executing command:', error)
       return res.json({ success: false, error: true })
