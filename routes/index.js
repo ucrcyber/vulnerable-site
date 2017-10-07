@@ -49,7 +49,7 @@ router.post('/news', ensureLoggedIn(), async (req, res) => {
 
 router.post('/shell', ensureLoggedIn(), async(req, res) => {
   if (!req.body || !req.body.command) return res.json({ success: false })
-  const command = `cowsay "${req.body.command}"` // Allow for command injection
+  const command = `${config.get('shell.command')} "${req.body.command}"` // Allow for command injection
   logger.debug('Executing command:', command)
 
   exec(command, config.get('shell.options'), (error, stdout, stderr) => {

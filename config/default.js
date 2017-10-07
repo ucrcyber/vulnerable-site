@@ -11,6 +11,7 @@ module.exports = {
     port: 3000
   },
   shell: {
+    command: 'cowsay', // Command to run
     options: {}
   },
   session: {
