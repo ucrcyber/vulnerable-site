@@ -5,15 +5,15 @@ const router = require('express').Router()
 const passport = require('../lib/passport')
 
 router.get('/', ensureLoggedIn(), (req, res) => {
-  res.render('index')
+  res.render('index', { user: req.user })
 })
 
 router.get('/forms', ensureLoggedIn(), (req, res) => {
-  return res.render('forms')
+  return res.render('forms', { user: req.user })
 })
 
 router.get('/tables', ensureLoggedIn(), (req, res) => {
-  return res.render('tables')
+  return res.render('tables', { user: req.user })
 })
 
 router.get('/login', (req, res) => {
