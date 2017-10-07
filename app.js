@@ -17,6 +17,7 @@ app.set('view engine', 'handlebars')
 
 const indexRoute = require('./routes/index')
 
+app.use(express.static('public'))
 app.use('/', indexRoute)
 
 async function main () {
