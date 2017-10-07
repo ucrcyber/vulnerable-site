@@ -1,6 +1,7 @@
 'use strict'
 
 const { ensureLoggedIn } = require('connect-ensure-login')
+const moment = require('moment')
 const router = require('express').Router()
 const passport = require('../lib/passport')
 const NewsItem = require('../models/NewsItem')
@@ -29,6 +30,17 @@ router.post('/login',
     res.redirect('/')
   }
 )
+
+router.post('/news', ensureLoggedIn(), async (req, res) => {
+  if (!req.body || !req.body.title || !req.body.body) return res.send('Invalid form')
+  await NewsItem.create({
+    title: req.body.title,
+    body: req.body.body,
+    month: moment().format('MMM'),
+    day: moment().format('D')
+  })
+  res.redirect('/')
+})
 
 router.get('/logout', ensureLoggedIn(), (req, res) => {
   req.logout()
