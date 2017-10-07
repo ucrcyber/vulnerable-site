@@ -23,6 +23,8 @@
   },
   "homepage": "https://github.com/ucrcyber/vulnerable-site#readme",
   "dependencies": {
+    "bluebird": "^3.5.1",
+    "chance": "^1.0.11",
     "config": "^1.26.2",
     "express": "^4.16.1",
     "express-handlebars": "^3.0.0",

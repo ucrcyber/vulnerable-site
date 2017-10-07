@@ -7,7 +7,6 @@ const User = require('./User')
 const CreditReport = db.define('creditReport', {
   id: { type: Sequelize.INTEGER.UNSIGNED, autoIncrement: true, primaryKey: true },
   cardNumber: Sequelize.STRING,
-  cvv: Sequelize.STRING,
   expires: Sequelize.STRING,
   creditScore: Sequelize.INTEGER
 })

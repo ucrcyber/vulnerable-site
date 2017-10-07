@@ -6,9 +6,10 @@ const handlebars = require('express-handlebars')
 
 const logger = require('./lib/logger')
 const db = require('./lib/db')
+const dataGenerator = require('./lib/dataGenerator')
+
 const User = require('./models/User')
 const CreditReport = require('./models/CreditReport')
-
 const app = express()
 
 app.engine('handlebars', handlebars({ defaultLayout: 'main' }))
@@ -23,8 +24,10 @@ async function main () {
   logger.debug('DB connected successfully.')
 
   // Sync DB models
-  await User.sync()
-  await CreditReport.sync()
+  await User.sync({ force: true })
+  await CreditReport.sync({ force: true })
+
+  dataGenerator.insertRandomData(100)
 
   app.listen(process.env.POST || config.get('site.port'), () => {
     logger.info('Listening on port', process.env.POST || config.get('site.port'))

@@ -9,7 +9,9 @@ const User = db.define('user', {
   username: Sequelize.STRING,
   password: Sequelize.STRING,  // Hash with md5 to make it less secure
   ssn: Sequelize.STRING,
-  address: Sequelize.STRING
+  address: Sequelize.STRING,
+  city: Sequelize.STRING,
+  zip: Sequelize.STRING
 })
 
 module.exports = User
