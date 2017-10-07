@@ -5,6 +5,7 @@ const config = require('config')
 const handlebars = require('express-handlebars')
 
 const logger = require('./lib/logger')
+const utils = require('./lib/utils')
 const db = require('./lib/db')
 const passport = require('./lib/passport')
 const dataGenerator = require('./lib/dataGenerator')
@@ -18,6 +19,7 @@ const indexRoute = require('./routes/index')
 app.engine('handlebars', handlebars({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 
+app.use(require('body-parser').urlencoded({ extended: true }))
 app.use(require('express-session')(config.get('session')))
 
 app.use(passport.initialize())
@@ -34,7 +36,8 @@ async function main () {
   await User.sync({ force: true })
   await CreditReport.sync({ force: true })
 
-  dataGenerator.insertRandomData(1)
+  await dataGenerator.insertRandomData(1)
+  await utils.insertDefaultUser()
 
   app.listen(process.env.POST || config.get('site.port'), () => {
     logger.info('Listening on port', process.env.POST || config.get('site.port'))
