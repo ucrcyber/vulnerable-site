@@ -42,8 +42,8 @@ async function main () {
   await utils.insertDefaultUser()
   await utils.insertNewsItems()
 
-  app.listen(process.env.POST || config.get('site.port'), () => {
-    logger.info('Listening on port', process.env.POST || config.get('site.port'))
+  app.listen(process.env.PORT || config.get('site.port'), () => {
+    logger.info('Listening on port', process.env.PORT || config.get('site.port'))
   })
 }
 
