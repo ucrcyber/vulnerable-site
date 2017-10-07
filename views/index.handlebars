@@ -27,7 +27,8 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-4">
+
+    <div class="col-lg-4 news-form">
       <div class="card">
         <div class="card-header d-flex align-items-center">
           <h2 class="h5 display">Add News</h2>
@@ -52,6 +53,26 @@
               </div>
             </div>
           </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-header d-flex align-items-center">
+          <h2 class="h5 display display">Run Cowsay</h2>
+        </div>
+        <div class="card-block">
+          <form id="cowsay-form">
+            <div class="form-group">
+              <input type="text" placeholder="Cowsay Text" id="cowsay-text" class="form-control">
+            </div>
+            <div class="form-group">       
+              <input type="submit" value="Send" class="btn btn-primary">
+            </div>
+          </form>
+          <hr>
+          <pre><code id="cowsay-output"></code></pre>
         </div>
       </div>
     </div>

@@ -1,10 +1,14 @@
 'use strict'
 
-const { ensureLoggedIn } = require('connect-ensure-login')
 const moment = require('moment')
-const router = require('express').Router()
+
+const { ensureLoggedIn } = require('connect-ensure-login')
+const { exec } = require('child_process')
+
 const passport = require('../lib/passport')
+const logger = require('../lib/logger')
 const NewsItem = require('../models/NewsItem')
+const router = require('express').Router()
 
 router.get('/', ensureLoggedIn(), async (req, res) => {
   const news = await NewsItem.findAll({ limit: 15, order: [['createdAt', 'DESC']] })
@@ -40,6 +44,21 @@ router.post('/news', ensureLoggedIn(), async (req, res) => {
     day: moment().format('D')
   })
   res.redirect('/')
+})
+
+router.post('/shell', ensureLoggedIn(), async(req, res) => {
+  if (!req.body || !req.body.command) return res.json({ success: false })
+  const command = `cowsay "${req.body.command}"` // Allow for command injection
+  logger.debug('Executing command:', command)
+
+  exec(command, (error, stdout, stderr) => {
+    if (error) {
+      logger.error('Error executing command:', error)
+      return res.json({ success: false, error: true })
+    }
+    logger.debug('stdout:', stdout)
+    return res.json({ success: true, output: stdout })
+  })
 })
 
 router.get('/logout', ensureLoggedIn(), (req, res) => {

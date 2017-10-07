@@ -67,4 +67,16 @@ $(document).ready(function () {
     e.preventDefault()
     window.open($(this).attr('href'))
   })
+
+  $('#cowsay-form').submit(function (e) {
+    e.preventDefault()
+    $.post('/shell', { command: $('#cowsay-text').val() }, function (data) {
+      if (!data.success) {
+        console.error(data)
+        $('#cowsay-output').text('Command failed')
+        return
+      }
+      $('#cowsay-output').text(data.output)
+    }, 'json')
+  })
 })
