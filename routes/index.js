@@ -1,20 +1,24 @@
 'use strict'
 
+const { ensureLoggedIn } = require('connect-ensure-login')
 const router = require('express').Router()
 const passport = require('../lib/passport')
 
-router.get('/', (req, res) => res.render('index'))
+router.get('/', ensureLoggedIn(), (req, res) => {
+  res.render('index')
+})
 
-router.get('/forms', (req, res) => {
+router.get('/forms', ensureLoggedIn(), (req, res) => {
   return res.render('forms')
 })
 
-router.get('/tables', (req, res) => {
+router.get('/tables', ensureLoggedIn(), (req, res) => {
   return res.render('tables')
 })
 
 router.get('/login', (req, res) => {
-  return res.render('login', { layout: false })
+  if (req.user) return res.redirect('/')
+  res.render('login', { layout: false })
 })
 
 router.post('/login',
@@ -24,8 +28,9 @@ router.post('/login',
   }
 )
 
-router.get('/logout', (req, res) => {
-  return res.render('login', { layout: false })
+router.get('/logout', ensureLoggedIn(), (req, res) => {
+  req.logout()
+  res.redirect('/login')
 })
 
 module.exports = router

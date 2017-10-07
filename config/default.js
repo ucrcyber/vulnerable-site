@@ -15,6 +15,7 @@ module.exports = {
     resave: false,
     saveUninitialized: false
   },
+  addDefaultUser: true,
   defaultUser: {
     name: 'Will',
     username: 'will',
