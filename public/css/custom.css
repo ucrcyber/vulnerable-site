@@ -4,6 +4,10 @@
   height: 32px;
 }
 
-.news-form {
+.news-form,#updates-box{
   margin-bottom: 20px
+}
+
+a.brand-small strong.text-primary {
+	color: red !important;
 }
