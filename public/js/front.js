@@ -74,9 +74,10 @@ $(document).ready(function () {
       if (!data.success) {
         console.error(data)
         $('#cowsay-output').text('Command failed')
-        return
+      } else {
+        $('#cowsay-output').text(data.output)
       }
-      $('#cowsay-output').text(data.output)
+      $('#cowsay-updated').text('Last Updated: ' + Date.now())
     }, 'json')
   })
 })
