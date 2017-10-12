@@ -9,7 +9,7 @@
 
 ```html
 <script>
-    var elements = document.getElementsByTagName('*')
+    var elements = document.getElementsByTagName('*');
     for (var i = 0; i < elements.length; ++i) {
         elements[i].style.background='url("https://i.imgur.com/HeGEEbu.jpg")';
     }
